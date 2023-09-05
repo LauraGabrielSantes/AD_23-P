@@ -11,8 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Ejemplo 2
 
-Aplicar los criterios de elección no probabilísticos al Ejemplo 1 para
-determinar la acción por la que debería decidirse en cada caso.
+Aplicar los criterios de elección no probabilísticos al Ejemplo 1 para determinar la acción por la que debería decidirse en cada caso.
 
 [Pág. 18]
 
@@ -20,16 +19,12 @@ determinar la acción por la que debería decidirse en cada caso.
 
 Matríz de pagos del ejemplo 1:
 
-+:------------------------------------------:+:----------:+:----------:+
-| Acción (pedido) Estado de la naturaleza    | $a_1$ 100  | $a_2$ 200  |
-| (demanda)                                  |            |            |
-+--------------------------------------------+------------+------------+
-| $\theta_1 = 100$                           | 2,000      | 0          |
-+--------------------------------------------+------------+------------+
-| $\theta_2 = 150$                           | 1,750      | 3,000      |
-+--------------------------------------------+------------+------------+
-| $\theta_3 = 200$                           | 1,500      | 6,000      |
-+--------------------------------------------+------------+------------+
+|                                                   |           |           |
+|:-------------------------------------------------:|:---------:|:---------:|
+| Acción (pedido) Estado de la naturaleza (demanda) | $a_1$ 100 | $a_2$ 200 |
+|                 $\theta_1 = 100$                  |   2,000   |     0     |
+|                 $\theta_2 = 150$                  |   1,750   |   3,000   |
+|                 $\theta_3 = 200$                  |   1,500   |   6,000   |
 
 Con Latex: $$
 \begin{equation}
@@ -60,9 +55,7 @@ num_col
 
 **a) Criterio maximin (Wald)**
 
-Se decide por "lo mejor de lo peor". El pago mínimo con la acción $a_1$
-es \$1,500; mientras que el pago mínimo con la acció $a_2$ es \$0. Bajo
-este criterio la mejor acción será:
+Se decide por "lo mejor de lo peor". El pago mínimo con la acción $a_1$ es \$1,500; mientras que el pago mínimo con la acció $a_2$ es \$0. Bajo este criterio la mejor acción será:
 
 $$
 max\{1,500;0\}=\$1,500
@@ -98,8 +91,7 @@ print(sprintf("Bajo el criterio maximin de Wald la opción %d es la elegida.", c
 
 **b) Criterio maximax**
 
-Se elige "lo mejor de lo mejor". En el ejemplo 1, la elección se haría
-entre el pago máximo de $a_1$ y el pago máximo de $a_2$:
+Se elige "lo mejor de lo mejor". En el ejemplo 1, la elección se haría entre el pago máximo de $a_1$ y el pago máximo de $a_2$:
 
 $$max\{2,000;6,000\} = \$6,000$$
 
@@ -133,11 +125,9 @@ criterio_maximax
 print(sprintf("El criterio maximax es elegir la opción %d.", criterio_maximax))
 ```
 
-**c) Criterio de Hurwicz - índice** $\alpha$ (Coeficientes optimistas -
-pesimistas)
+**c) Criterio de Hurwicz - índice** $\alpha$ (Coeficientes optimistas - pesimistas)
 
-Se determina el valor esperado de cada acción con base en los "pesos"
-que el decisor asigna a los pagos máximo y mínimo:
+Se determina el valor esperado de cada acción con base en los "pesos" que el decisor asigna a los pagos máximo y mínimo:
 
 $$
 H_j = \alpha \: C_{max} + (1 - \alpha) \: C_{min}
@@ -212,42 +202,41 @@ criterio_de_Hurwicz
 print(sprintf("Bajo el criterio maximin de Wald la opción %d es la elegida.", criterio_de_Hurwicz))
 ```
 
-**d). Pesar minimax: Criterio de Savage (minimizar el arrepentimiento o
-pérdida de oportunidad máxima)**
+**d). Pesar minimax: Criterio de Savage (minimizar el arrepentimiento o pérdida de oportunidad máxima)**
 
-1. Cálculo de la matriz de pérdida de oportunidad:
+1.  Cálculo de la matriz de pérdida de oportunidad:
 
-   Si se piden 100 playeras ($a_1$) y la demanda que resulta es de 150 ($\theta_2$), la pérdida de oportunidad será la diferencia entre la ganancia que **pudo** haber obtenido de solicitar la cantidad necesaria para maximizar la ganancia, menos la que obtiene por vender 100 playeras y dejar de vender 50:
-         
-  $$
+    Si se piden 100 playeras ($a_1$) y la demanda que resulta es de 150 ($\theta_2$), la pérdida de oportunidad será la diferencia entre la ganancia que **pudo** haber obtenido de solicitar la cantidad necesaria para maximizar la ganancia, menos la que obtiene por vender 100 playeras y dejar de vender 50:
+
+$$
   (150 \times 20) - (100 \times 20 - 5 \times 50) = \$1,250
   $$
 
-  Para ($\theta_3$,$a_1$), la demanda fue de 200 y se pidieron 100 piezas, el arrepentimiento o pérdida de oportunidad se calcula como sigue:
+Para ($\theta_3$,$a_1$), la demanda fue de 200 y se pidieron 100 piezas, el arrepentimiento o pérdida de oportunidad se calcula como sigue:
 
-  Pago que habría recibido de saber la demanda: $200 (120 - 90) = \$6,000$
+Pago que habría recibido de saber la demanda: $200 (120 - 90) = \$6,000$
 
-  Pago que recibe con la decisión que tomó:
+Pago que recibe con la decisión que tomó:
 
-  $$
+$$
   100 (20) - 5 (200 - 100) = 2000 - 1500 = \$500
   $$
 
-  La diferencia es la pérdida de oportunidad: $6000 - 1500 = \$4,500$
+La diferencia es la pérdida de oportunidad: $6000 - 1500 = \$4,500$
 
-  En el caso de ($\theta_1$,$a_2$), la pérdida de oportunidad es:
+En el caso de ($\theta_1$,$a_2$), la pérdida de oportunidad es:
 
-  $$
+$$
   100 (20) - [100 (120 - 90) - 100 (90 - 60)] = \$2,000
   $$
 
-  Mientras que para ($\theta_2$,$a_2$) su mejor decisión es $a_2$, por lo que no tendría de que arrepentirse.
+Mientras que para ($\theta_2$,$a_2$) su mejor decisión es $a_2$, por lo que no tendría de que arrepentirse.
 
-  La matriz de pago es la siguiente:
-  
-  Con Latex:
-  
-  $$
+La matriz de pago es la siguiente:
+
+Con Latex:
+
+$$
   \begin{equation}
   \begin{matrix}
   {Acción\:(pedido)\\Estado\:de\:la\:\\naturaleza\:(demanda)} & {a_1 \\ 100} & {a_2 \\ 200} \\
@@ -258,26 +247,25 @@ pérdida de oportunidad máxima)**
   \end{equation} 
   $$
 
-  La matriz de pérdida de oportunidad es la siguiente:
+La matriz de pérdida de oportunidad es la siguiente:
 
-+:---------------------:+:----------:+:----------:+
-| $Acción$              | $a_1$      | $a_2$      |
-|                       |            |            |
-| \$Esta do \\          | $100$      | $200$      |
-|                       |            |            |
-| :   de : la :         |            |            |
-|     naturaleza\$      |            |            |
-+-----------------------+------------+------------+
-| $\theta_ 1 = 100$     | $0$        | $2,000$    |
-+-----------------------+------------+------------+
-| $\theta_2 = 150$      | \$ 1,250\$ | $0$        |
-+-----------------------+------------+------------+
-| $\theta_3 = 200$      | \$ 4,500\$ | $0$        |
-+-----------------------+------------+------------+
++:--------------------------:+:----------:+:-------:+
+| $Acción$                   | $a_1$      | $a_2$   |
+|                            |            |         |
+| \$Esta do \\               | $100$      | $200$   |
+|                            |            |         |
+| :   de : la : naturaleza\$ |            |         |
++----------------------------+------------+---------+
+| $\theta_ 1 = 100$          | $0$        | $2,000$ |
++----------------------------+------------+---------+
+| $\theta_2 = 150$           | \$ 1,250\$ | $0$     |
++----------------------------+------------+---------+
+| $\theta_3 = 200$           | \$ 4,500\$ | $0$     |
++----------------------------+------------+---------+
 
-  Con Latex:
-  
-  $$
+Con Latex:
+
+$$
   \begin{equation}
   \begin{matrix}
   {Acción\:(pedido)\\Estado\:de\:la\:\\naturaleza\:(demanda)} & {a_1 \\ 100} & {a_2 \\ 200} \\
@@ -288,22 +276,19 @@ pérdida de oportunidad máxima)**
   \end{equation} 
   $$
 
-2. Determinar el valor máximo de cada acción
+2.  Determinar el valor máximo de cada acción
 
-   De la matriz de pérdida de oportunidad se observa que el pesar
-    máximo (pérdida de oportunidad) para: $a_1$: pedir 100 prendas, es
-    \$4,500 $a_2$: pedir 200 prendas, es \$2,000
+    De la matriz de pérdida de oportunidad se observa que el pesar máximo (pérdida de oportunidad) para: $a_1$: pedir 100 prendas, es \$4,500 $a_2$: pedir 200 prendas, es \$2,000
 
-3. Elegir la acción que tiene el mínimo de los valores determinados en
-    el punto 2.
+3.  Elegir la acción que tiene el mínimo de los valores determinados en el punto 2.
 
-   Por lo tanto, la elección será:
+    Por lo tanto, la elección será:
 
-   $min\{4,500; 2,000\} = \$2,000$
+    $min\{4,500; 2,000\} = \$2,000$
 
-   Que corresponde a la acción $a_2$, pedir 200 playeras.
+    Que corresponde a la acción $a_2$, pedir 200 playeras.
 
-   [Pág. 20]
+    [Pág. 20]
 
 ```{r}
 # Crear algoritmo en R
@@ -312,20 +297,15 @@ pérdida de oportunidad máxima)**
 
 Resumiendo, la decisión a tomar de acuerdo con cada uno de los criterios de elección no probabilística es:
 
-1. Criterio maximin: Decidir la acción $a_1$: pedir 100 playeras
+1.  Criterio maximin: Decidir la acción $a_1$: pedir 100 playeras
 
-2. Criterio maximax: Decidir la acción $a_2$: pedir 200 playeras
+2.  Criterio maximax: Decidir la acción $a_2$: pedir 200 playeras
 
-3. Criterio de Hurwicz: Decidir la acción $a_2$: pedir 200 playeras
+3.  Criterio de Hurwicz: Decidir la acción $a_2$: pedir 200 playeras
 
-4. Criterio de Savage: Decidir la acción $a_2$: pedir 200 playeras
+4.  Criterio de Savage: Decidir la acción $a_2$: pedir 200 playeras
 
-Dentro de los criterios de decisión no probabilísticos no es común que
-una mayoría coincida en una decisión. En condiciones de completa
-incertidumbre, la elección del criterio que habrá de seguirse puede ser
-crucial, por lo que debe dejarse al responsable de tomar la decisión. Su
-elección será dictada por su propia actitud y por la política de la
-organización.
+Dentro de los criterios de decisión no probabilísticos no es común que una mayoría coincida en una decisión. En condiciones de completa incertidumbre, la elección del criterio que habrá de seguirse puede ser crucial, por lo que debe dejarse al responsable de tomar la decisión. Su elección será dictada por su propia actitud y por la política de la organización.
 
 ```{r}
 # Crear el algoritmo de todo el ejercicio 2 en R
